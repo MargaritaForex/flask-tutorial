@@ -1,0 +1,130 @@
+{
+	"info": {
+		"_postman_id": "8f90c014-1618-4a9f-8e10-837a5628efec",
+		"name": "Semestre4",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8000916"
+	},
+	"item": [
+		{
+			"name": "obtener canciones",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/canciones",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"canciones"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener un cancion",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/cancion/2",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"cancion",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "crear cancion",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"titulo\": \"prueba\",\r\n    \"minutos\": 20,\r\n    \"segundos\": 20,\r\n    \"interprete\": \"interprete\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/canciones",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"canciones"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "actualizar cancion",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"titulo\": \"prueba2\",\r\n    \"minutos\": 20,\r\n    \"segundos\": 20,\r\n    \"interprete\": \"interprete\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/cancion/1",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"cancion",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "eliminar cancion",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/cancion/2",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"cancion",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
