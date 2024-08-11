@@ -2,7 +2,7 @@ from flaskr import create_app
 from .modelos import db, Cancion, Usuario, Album, Medio
 from .modelos import AlbumSchema
 from flask_restful import Api
-from .vistas import VistaCanciones, VistaCancion
+from .vistas import VistaCanciones, VistaCancion, VistaSignIn
 from flask_jwt_extended import JWTManager
 
 app = create_app('default')
@@ -17,11 +17,7 @@ db.create_all()
 api = Api(app)
 api.add_resource(VistaCanciones, '/canciones')
 api.add_resource(VistaCancion, '/cancion/<int:id_cancion>')
-api.add_resource(VistaCanciones, '/signin')
-api.add_resource(VistaCancion, '/usuario/<int:id_usuario>/album')
-api.add_resource(VistaCancion, '/album/<int:id_album>')
-api.add_resource(VistaCancion, '/album/<int:id_album>/cancion')
-
+api.add_resource(VistaSignIn, '/signin')
 jwt = JWTManager(app)
 
 # with app.app_context():

@@ -1,5 +1,5 @@
 from flask_restful import Resource
-from ..modelos import db, Cancion, CancionSchema, Usuario, Album
+from ..modelos import db, Cancion, CancionSchema, Usuario, Album, AlbumSchema
 from flask import request
 from sqlalchemy.exc import IntegrityError
 from flask_jwt_extended import jwt_required, create_access_token
@@ -49,7 +49,7 @@ class VistaSignIn(Resource):
       token_de_acceso = create_access_token(identity=request.json['nombre'])
       db.session.add(nuevo_usuario)
       db.session.commit()
-      return 'Usuario creado exitosamente', 201
+      return 'Usuario creado exitosamente', token_de_acceso
    
    def put(self, id_usuario):
       usuario = Usuario.query.get_or_404(id_usuario)
@@ -69,14 +69,11 @@ class VistaAlbumUsuario(Resource):
       except IntegrityError:
          db.session.rollback()
          return 'El usuario ya tiene un album con dicho nombre'
-      return album_chema.dump(nuevo_album)
+      return AlbumSchema.dump(nuevo_album)
    
 
    @jwt_required()
    def get(self, id_usuario):
       usuario = Usuario.query.get_or_404(id_usuario)
-      return [album_chema.dump(al) for al in usuario.albumes]
+      return [AlbumSchema.dump(al) for al in usuario.albumes]
    
-class VistaCancionAlbum(Resource):
-   
-   def post(self, id_album):
